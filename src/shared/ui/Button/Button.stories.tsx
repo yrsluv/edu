@@ -18,7 +18,6 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: 'Text',
     theme: ButtonTheme.CLEAR,
-
 };
 export const CLEAR = Template.bind({});
 CLEAR.args = {
@@ -98,5 +97,10 @@ SquareSizeXL.args = {
     theme: ButtonTheme.BACKGROUND_INVERTED,
     square: true,
     size: ButtonSize.XL,
-
+};
+export const Disabled = Template.bind({});
+Disabled.args = {
+    children: 'login',
+    theme: ButtonTheme.OUTLINE,
+    disabled: true,
 };
