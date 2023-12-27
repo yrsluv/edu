@@ -16,5 +16,13 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "fisrtname": "YRSLUV",
+    "lastname": "BKHTIN",
+    "age": 22,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Obninsk",
+    "username": "admin"
+  }
 }
