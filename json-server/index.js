@@ -32,6 +32,8 @@ server.post('/login', (req, res) => {
             return res.json(userFromBd);
         }
 
+        console.log(userFromBd, username, password);
+
         return res.status(403).json({ message: 'User not found' });
     } catch (e) {
         console.log(e);
