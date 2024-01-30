@@ -16,8 +16,8 @@ import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
+    onSuccess: () => void,
     className?: string;
-    onSuccess?: () => void,
 }
 
 const initialReducers: ReducersList = {

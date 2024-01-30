@@ -38,6 +38,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'object-curly-newline': 'off',
         'implicit-arrow-linebreak': 'off',
+        'no-undef': 'off',
         'i18next/no-literal-string': [
             'error',
             {

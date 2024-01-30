@@ -22,7 +22,7 @@ export const Input = memo((props: InputProps) => {
         ...otherProps
     } = props;
 
-    const ref = useRef<HTMLInputElement>();
+    const ref = useRef<HTMLInputElement | null>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaterPosition] = useState(0);
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +45,9 @@ export const Input = memo((props: InputProps) => {
     useEffect(() => {
         if (!autofocus) return;
         setIsFocused(true);
-        ref.current.focus();
+        if (ref.current !== null) {
+            ref.current.focus();
+        }
     }, [autofocus]);
 
     return (

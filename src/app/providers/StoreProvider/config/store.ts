@@ -6,6 +6,7 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { $api } from 'shared/api/api';
 import { To } from '@remix-run/router';
 import { NavigateOptions } from 'react-router/dist/lib/context';
+import { CombinedState, Reducer } from 'redux';
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -21,7 +22,7 @@ export function createReduxStore(
     const reducerManager = createReducerManager(rootReducer);
 
     const store = configureStore({
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({

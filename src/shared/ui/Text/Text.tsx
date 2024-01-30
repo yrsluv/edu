@@ -15,7 +15,7 @@ interface TextProps {
     theme?: TextTheme;
 }
 
-export const Text = memo(({ className, title, text, theme }: TextProps) => {
+export const Text = memo(({ className, title, text, theme = TextTheme.PRIMARY }: TextProps) => {
     const { t } = useTranslation();
     return (
         <div className={classNames(cls.Text, { [cls[theme]]: true }, [className])}>

@@ -1,7 +1,7 @@
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User/model/types/user';
 import { LoginSchema } from 'features/AuthByUsername';
-import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, Dispatch, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { To } from '@remix-run/router';
@@ -30,11 +30,12 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 }
 
 export interface ThunkExtraArg {
-    navigate: (to: To, options?: NavigateOptions) => void,
+    navigate?: (to: To, options?: NavigateOptions) => void,
     api: AxiosInstance
 }
 
 export interface ThunkConfig<T> {
     rejectValue: T,
     extra: ThunkExtraArg,
+    dispatch: Dispatch,
 }
