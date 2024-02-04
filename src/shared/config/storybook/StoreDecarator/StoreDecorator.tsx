@@ -5,15 +5,16 @@ import { profileReducer } from 'entities/Profile';
 import { ReducersList } from 'shared/lib/components/DynamicModelLoader/DynamicModelLoader';
 
 const defaultAsyncReducers: ReducersList = {
-    loginFrom: loginReducer,
-    profile: profileReducer,
+  loginFrom: loginReducer,
+  profile: profileReducer,
 };
 
-export const StoreDecorator = (
-    state: DeepPartial<StateSchema>,
-    asyncReducers?: ReducersList,
-) => (StoryComponent: Story) => (
-    <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
-        <StoryComponent />
+export const StoreDecorator =
+  (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) => (StoryComponent: Story) => (
+    <StoreProvider
+      initialState={state}
+      asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+    >
+      <StoryComponent />
     </StoreProvider>
-);
+  );
