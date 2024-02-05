@@ -8,44 +8,44 @@ import { getUserAuthData, userActions } from 'entities/User';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
-    className?: string;
+  className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const { t } = useTranslation();
-    const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
-    const authData = useSelector(getUserAuthData);
-    const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
+  const authData = useSelector(getUserAuthData);
+  const dispatch = useDispatch();
 
-    const onCloseModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
-    }, []);
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal((prev) => !prev);
+  }, []);
 
-    const onOpenModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
-    }, []);
+  const onOpenModal = useCallback(() => {
+    setIsAuthModal((prev) => !prev);
+  }, []);
 
-    const onLogout = useCallback(() => {
-        dispatch(userActions.logout());
-    }, [dispatch]);
+  const onLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
-    if (authData) {
-        return (
-            <div className={classNames(cls.Navbar, {}, [className])}>
-                <Button theme={ButtonTheme.CLEAR} className={cls.links} onClick={onLogout}>
-                    {t('Выйти')}
-                </Button>
-                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
-            </div>
-        );
-    }
-
+  if (authData) {
     return (
-        <div className={classNames(cls.Navbar, {}, [className])}>
-            <Button theme={ButtonTheme.CLEAR} className={cls.links} onClick={onOpenModal}>
-                {t('Войти')}
-            </Button>
-            {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
-        </div>
+      <div className={classNames(cls.Navbar, {}, [className])}>
+        <Button theme={ButtonTheme.CLEAR} className={cls.links} onClick={onLogout}>
+          {t('Выйти')}
+        </Button>
+        <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      </div>
     );
+  }
+
+  return (
+    <div className={classNames(cls.Navbar, {}, [className])}>
+      <Button theme={ButtonTheme.CLEAR} className={cls.links} onClick={onOpenModal}>
+        {t('Войти')}
+      </Button>
+      {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
+    </div>
+  );
 });
